@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Лист дел">
+  <title>ToDoList</title>
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="preload" href="fonts/poppins-medium.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="preload" href="fonts/cormorant-garamond-bold.woff2" as="font" type="font/woff2" crossorigin="">
+</head>
+<body>
+  <header class="main-header">
+  </header>
+  <main class="main-page">
+    <section class="main-page__wrapper">
+      <h1>ToDoList</h1>
+      <div class="main-page__add-task">
+        <label class="visually-hidden" for="id-new-task">Добавить задачу</label>
+        <input type="text" id="new-task">
+        <button class="main-page__new-task-btn"></button>
+        <button class="main-page__clear-task-btn">Очистить</button>
+      </div>
+      <ul class="main-page__list list">
+        <li>
+          <span>1.</span>
+          <p>Сходить в туалет</p>
+          <div class="list__check-wrapper">
+            <label class="visually-hidden" for="id-check-task">Выполненная задача</label>
+            <input id="check-task" type="checkbox">
+          </div>
+          <button class="list__delete-task">Удалить задачу</button>
+        </li>
+        <!--<li>-->
+        <!--  <p>Пожрать</p>-->
+        <!--  <span>Удалить задачу</span>-->
+        <!--</li>-->
+        <!--<li>-->
+        <!--  <p>Поспать</p>-->
+        <!--  <span>Удалить задачу</span>-->
+        <!--</li>-->
+      </ul>
+    </section>
+  </main>
+  <footer>
+  </footer>
+</body>
+</html>

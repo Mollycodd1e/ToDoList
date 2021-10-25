@@ -1,0 +1,39 @@
+.list {
+  list-style: none;
+}
+
+.list li {
+  display: flex;
+  margin-top: 10px;
+}
+
+.list li:first-child {
+  margin-top: 0;
+}
+
+.list p {
+  margin: 0;
+  margin-left: 5px;
+}
+
+.list__check-wrapper span {
+  margin-left: 15px;
+}
+
+.list button {
+  position: relative;
+  width: auto;
+  height: 20px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffc0cb;
+
+    &::after,
+    &::before {
+      background-color: #292929;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+.main-page__wrapper {
+  margin-top: 30px;
+  padding: 0 20px;
+}
+
+.main-page__wrapper h1 {
+  margin: 0;
+}
+
+.main-page__add-task {
+  display: flex;
+  margin-top: 30px;
+}
+
+.main-page__add-task input {
+  border: 1px solid #000000;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffc0cb;
+  }
+}
+
+.main-page__add-task button {
+  margin-left: 15px;
+}
+
+.main-page__new-task-btn {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  cursor: pointer;
+
+  &::after,
+  &::before {
+    position: absolute;
+    content: "";
+    top: 8px;
+    left: 4px;
+    width: 10px;
+    height: 2px;
+    background-color: #000000;
+  }
+
+  &::after {
+    transform: rotate(-90deg);
+  }
+
+  &:hover {
+    background-color: #ffc0cb;
+
+    &::after,
+    &::before {
+      background-color: #292929;
+    }
+  }
+}
+
+.main-page__clear-task-btn {
+  width: 100px;
+  height: 20px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffc0cb;
+  }
+}
+
+.main-page__list {
+  margin: 0;
+  padding: 0;
+  margin-top: 20px;
+}
