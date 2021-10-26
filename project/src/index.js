@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import reducer from './components/store/reducer.js';
 
 const store = configureStore({reducer: reducer});
+console.log(store);
 
 ReactDOM.render(
   <React.StrictMode>

@@ -8,15 +8,15 @@ function List(props) {
 
   return (
     <ul className="main-page__list list">
-      {tasksList.map((task) =>
-        <ListItem />)
+      {tasksList.map((task, index) =>
+        <ListItem task={task} index={index} key={index}/>)
       }
     </ul>
   )
 }
 
 List.propTypes = {
-  tasksList: PropTypes.string.isRequired,
+  tasksList: PropTypes.arrayOf(PropTypes.string.isRequired),
 };
 
 export default List;

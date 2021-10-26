@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {addTask} from '../action';
+import {addTask, deleteTask} from '../action';
 
 const initialState = {
   tasksList: [],
@@ -8,7 +8,10 @@ const initialState = {
 const data = createReducer(initialState, (builder) => {
   builder
     .addCase(addTask, (state, action) => {
-      state.tasksList = action.payload;
+      state.tasksList.push(action.payload);
+    })
+    .addCase(deleteTask, (state, action) => {
+      state.tasksList = state.tasksList.filter((task) => task !== action.payload);
     });
 });
 
