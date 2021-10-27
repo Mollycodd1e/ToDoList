@@ -9,8 +9,8 @@ function ListItem(props) {
 
   const dispatch = useDispatch();
 
-  const deleteNewTask = (task) => {
-    dispatch(deleteTask(task));
+  const deleteNewTask = (task, index) => {
+    dispatch(deleteTask(task, index));
   }
 
   return (
@@ -21,7 +21,7 @@ function ListItem(props) {
         <label className="visually-hidden" forhtml="id-check-task">Выполненная задача</label>
         <input id="check-task" type="checkbox" />
       </div>
-      <button className="list__delete-task" onClick={() => deleteNewTask(task)}>Удалить задачу</button>
+      <button className="list__delete-task" onClick={() => deleteNewTask(task, index)}>Удалить задачу</button>
     </li>
   )
 }

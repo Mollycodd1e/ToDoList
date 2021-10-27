@@ -11,7 +11,7 @@ const data = createReducer(initialState, (builder) => {
       state.tasksList.push(action.payload);
     })
     .addCase(deleteTask, (state, action) => {
-      state.tasksList = state.tasksList.filter((task) => task !== action.payload);
+      state.tasksList = state.tasksList.filter((task, index) => ((task !== action.payload) && (index !== action.payload.index)));
     });
 });
 

@@ -16,6 +16,48 @@
   margin-left: 5px;
 }
 
+.list__check-wrapper {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.list__check-wrapper label {
+  position: relative;
+  width: 40px;
+  height: 100%;
+}
+
+.list__check-wrapper input:not(:checked) + label::before {
+  content: "";
+
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  background-image: url("../../img/circle.svg");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center center;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.list__check-wrapper input:checked + label::after {
+  content: "";
+
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 0;
+  left: 0;
+  background-image: url("../../img/check-circle.svg");
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+  background-position: center center;
+}
+
 .list__check-wrapper span {
   margin-left: 15px;
 }

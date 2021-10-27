@@ -9,6 +9,9 @@ export const addTask = createAction(ActionType.ADD_TASK, (task) => ({
   payload: task,
 }));
 
-export const deleteTask = createAction(ActionType.DELETE_TASK, (task) => ({
-  payload: task,
+export const deleteTask = createAction(ActionType.DELETE_TASK, (task, index) => ({
+  payload:
+    { task: task,
+      index: index,
+    },
 }));
