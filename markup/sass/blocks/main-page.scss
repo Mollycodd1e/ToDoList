@@ -23,37 +23,28 @@
   font-size: 20px;
   line-height: 30px;
   flex-grow: 2;
-  border: 1px solid #000000;
+  border: 2px solid #000000;
   cursor: pointer;
+  border-radius: 5px;
 
-  &:hover {
-    background-color: #ffc0cb;
+  &:hover,
+  &:focus {
+    border: 2px solid #903535;
   }
 }
 
-.main-page__add-task button {
-  margin-left: 20px;
-}
-
-.main-page__new-task-btn {
-  width: 40px;
-  padding: 0;
-  height: auto;
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
-}
-
+.main-page__new-task-btn,
 .main-page__clear-task-btn {
   width: 40px;
+  margin-left: 20px;
   padding: 0;
   height: auto;
+  background-color: transparent;
   border: none;
-  background-color: #ffffff;
   cursor: pointer;
 
-  &:hover {
-    background-color: #ffc0cb;
+  &:hover svg {
+    stroke: #903535;
   }
 }
 
