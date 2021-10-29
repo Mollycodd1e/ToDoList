@@ -41,9 +41,11 @@
   height: auto;
   background-color: transparent;
   border: none;
+  outline: none;
   cursor: pointer;
 
-  &:hover svg {
+  &:hover svg,
+  &:focus svg {
     stroke: #903535;
   }
 }

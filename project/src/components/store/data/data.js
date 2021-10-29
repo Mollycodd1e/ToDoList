@@ -12,6 +12,7 @@ const data = createReducer(initialState, (builder) => {
     })
     .addCase(deleteTask, (state, action) => {
       state.tasksList = state.tasksList.filter((task, index) => ((task !== action.payload) && (index !== action.payload.index)));
+      console.log(state.tasksList)
     });
 });
 

@@ -15,12 +15,28 @@ li:hover .list__button--opened {
   display: block;
 }
 
+li:hover input:not(:checked) + label::before {
+  background-image: url("../../img/hover-circle.svg");
+}
+
+li input:focus:not(:checked) + label::before {
+  background-image: url("../../img/hover-circle.svg");
+}
+
+li input:focus:not(:checked) ~ label {
+  color: #903535;
+}
+
+li:hover input:checked + label::after,
+li input:checked + label:focus::after {
+  background-image: url("../../img/check-circle-red.svg");
+}
+
 .list li:first-child {
   margin-top: 0;
 }
 
 .list__check-wrapper span {
-  margin-left: 15px;
   margin-right: 10px;
   font-size: 20px;
   line-height: 38px;
@@ -33,9 +49,9 @@ li:hover .list__button--opened {
   max-width: 900px;
   word-wrap: break-word;
   height: auto;
-  padding-left: 40px;
+  padding-left: 55px;
   font-size: 20px;
-  line-height: 40px;
+  line-height: 35px;
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -44,7 +60,7 @@ li .list__check-wrapper {
   position: relative;
   margin: 0;
   width: 100%;
-  height: 40px;
+  height: auto;
 
   &::after {
     content: "";
@@ -78,6 +94,10 @@ li:last-child .list__check-wrapper::after {
   cursor: pointer;
 }
 
+.list__check-wrapper--important input:not(:checked) + label::before {
+  background-image: url("../../img/alert-circle.svg");
+}
+
 .list__check-wrapper:hover input:not(:checked) + label::before {
   background-image: url("../../img/hover-circle.svg");
 }
@@ -109,14 +129,6 @@ li:last-child .list__check-wrapper::after {
   opacity: 0.5;
 }
 
-.list__check-wrapper input:checked + label:hover {
-  opacity: 1;
-
-  &::after {
-    opacity: 1;
-  }
-}
-
 .list .list__button {
   position: relative;
   margin-left: 20px;
@@ -128,6 +140,8 @@ li:last-child .list__check-wrapper::after {
   background-repeat: no-repeat;
   background-size: 32px 32px;
   background-position: center center;
+  border-radius: 50%;
+  outline: none;
 
   &--edit {
     background-image: url("../../img/edit.svg");
@@ -137,7 +151,29 @@ li:last-child .list__check-wrapper::after {
     background-image: url("../../img/trash.svg");
   }
 
+  &--important {
+    background-size: 35px 35px;
+
+    background-image: url("../../img/alert-circle.svg");
+  }
+
   &--closed {
     display: none;
+  }
+
+  &--disabled {
+    opacity: 0.3;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.5;
+  }
+}
+
+@media(max-width: $tablet-width-only) {
+  .list__check-wrapper label {
+    font-size: 18px;
+    line-height: 33px;
   }
 }
