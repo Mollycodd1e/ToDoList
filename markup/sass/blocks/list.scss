@@ -102,6 +102,14 @@ li:last-child .list__check-wrapper::after {
   background-image: url("../../img/hover-circle.svg");
 }
 
+.list__check-wrapper--important:hover input:not(:checked) + label::before {
+  background-image: url("../../img/alert-circle.svg");
+}
+
+li:hover .list__check-wrapper--important input:not(:checked) + label::before {
+  background-image: url("../../img/alert-circle.svg");
+}
+
 .list__check-wrapper input:checked + label {
   text-decoration: line-through;
 

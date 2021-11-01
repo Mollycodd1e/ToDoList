@@ -9,14 +9,14 @@ function List(props) {
   return (
     <ul className="main-page__list list">
       {tasksList.map((task, index) =>
-        <ListItem task={task} index={index} key={index}/>)
+        <ListItem task={task.task} index={index} key={index} select={task.select === false} important={task.important === false}/>)
       }
     </ul>
   )
 }
 
 List.propTypes = {
-  tasksList: PropTypes.arrayOf(PropTypes.string.isRequired),
+  tasksList: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
 export default List;
