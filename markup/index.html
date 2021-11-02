@@ -27,22 +27,30 @@
       </div>
       <ul class="main-page__list list">
         <li>
-          <div class="list__check-wrapper">
+          <div class="list__check-wrapper list__check-wrapper--edit">
             <input class="visually-hidden" name="check-task" id="check-task" type="checkbox">
-            <label for="check-task"><span>1.</span>Поесть</label>
+            <label for="check-task"><span>1.</span></label>
+            <div class="list__input-edit-wrapper">
+              <input name="edit-task" id="edit-task" type="text" value="Поесть gbb Поесть gbb fgb fgb fgbfgbfgbfg bfgb fgb fgb fgb fgb fgb fgbf gbf gbfgbf gb fgbf gbfgbf gbf gb fgb fgb fgb fgbfgbfgbfg bfgb fgb fgb fgb fgb fgb fgbf gbf gbfgbf gb fgbf gbfgbf gbf gb fgb">
+              <label class="visually-hidden" for="edit-task">Поесть</label>
+            </div>
           </div>
-          <button class="list__button list__button--important list__button--closed" aria-label="Важная задача"></button>
-          <button class="list__button list__button--edit list__button--closed" aria-label="Редактировать задачу"></button>
-          <button class="list__button list__button--trash list__button--closed" aria-label="Удалить задачу"></button>
+          <div class="list__button-wrapper list__button-wrapper--closed">
+            <button class="list__button list__button--important list__button--closed" aria-label="Важная задача"></button>
+            <button class="list__button list__button--edit list__button--closed" aria-label="Редактировать задачу"></button>
+            <button class="list__button list__button--trash list__button--closed" aria-label="Удалить задачу"></button>
+          </div>
         </li>
         <li>
           <div class="list__check-wrapper">
             <input class="visually-hidden" name="check-task" id="check-task" type="checkbox">
-            <label for="check-task"><span>2.</span>Поспать</label>
+            <label for="check-task"><span>2.</span>Поесть gbb fgb fgb fgbfgbfgbfg bfgb fgb fgb fgb fgb fgb fgbf gbf gbfgbf gb fgbf gbfgbf gbf gb fgb Поесть gbb fgb fgb fgbfgbfgbfg bfgb fgb fgb fgb fgb fgb fgbf gbf gbfgbf gb fgbf gbfgbf gbf gb fgb</label>
           </div>
-          <button class="list__button list__button--important list__button--closed" aria-label="Важная задача"></button>
-          <button class="list__button list__button--edit list__button--closed" aria-label="Редактировать задачу"></button>
-          <button class="list__button list__button--trash list__button--closed" aria-label="Удалить задачу"></button>
+          <div class="list__button-wrapper list__button-wrapper--closed">
+            <button class="list__button list__button--important" aria-label="Важная задача"></button>
+            <button class="list__button list__button--edit" aria-label="Редактировать задачу"></button>
+            <button class="list__button list__button--trash" aria-label="Удалить задачу"></button>
+          </div>
         </li>
       </ul>
     </section>

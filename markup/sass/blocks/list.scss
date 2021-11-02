@@ -3,12 +3,18 @@
 }
 
 .list li {
+  position: relative;
   display: flex;
   margin-top: 10px;
+  padding-right: 175px;
 
   &:hover {
     color: #903535;
   }
+}
+
+.list li:first-child {
+  margin-top: 0;
 }
 
 li:hover .list__button--opened {
@@ -32,10 +38,6 @@ li input:checked + label:focus::after {
   background-image: url("../../img/check-circle-red.svg");
 }
 
-.list li:first-child {
-  margin-top: 0;
-}
-
 .list__check-wrapper span {
   margin-right: 10px;
   font-size: 20px;
@@ -46,7 +48,6 @@ li input:checked + label:focus::after {
   position: relative;
   display: block;
   width: 100%;
-  max-width: 900px;
   word-wrap: break-word;
   height: auto;
   padding-left: 55px;
@@ -71,6 +72,38 @@ li .list__check-wrapper {
     height: 1px;
     background-color: black;
     opacity: 0.2;
+  }
+}
+
+.list__check-wrapper--edit {
+  display: flex;
+}
+
+.list__check-wrapper--edit label {
+  width: 79px;
+}
+
+.list__check-wrapper--edit:hover input,
+li:hover input {
+  color: #903535;
+}
+
+.list__input-edit-wrapper {
+  width: 100%;
+}
+
+.list__input-edit-wrapper input {
+  border: none;
+  font-size: 20px;
+  line-height: 35px;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    color: #903535;
   }
 }
 
@@ -137,11 +170,22 @@ li:hover .list__check-wrapper--important input:not(:checked) + label::before {
   opacity: 0.5;
 }
 
+.list__button-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+
+.list__button-wrapper--closed {
+  display: none;
+}
+
 .list .list__button {
   position: relative;
   margin-left: 20px;
   min-width: 40px;
-  height: auto;
+  height: 40px;
   background-color: #ffffff;
   border: none;
   cursor: pointer;
@@ -163,14 +207,6 @@ li:hover .list__check-wrapper--important input:not(:checked) + label::before {
     background-size: 35px 35px;
 
     background-image: url("../../img/alert-circle.svg");
-  }
-
-  &--closed {
-    display: none;
-  }
-
-  &--disabled {
-    opacity: 0.3;
   }
 
   &:hover,

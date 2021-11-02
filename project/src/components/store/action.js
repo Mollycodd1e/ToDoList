@@ -5,6 +5,7 @@ export const ActionType = {
   DELETE_TASK: '/deleteTask',
   CHANGE_CHECK: '/changeCheck',
   CHANGE_IMPORTANT: '/changeImportant',
+  CHANGE_TASK: '/changeTask',
 };
 
 export const addTask = createAction(ActionType.ADD_TASK, (task, select, important) => ({
@@ -24,6 +25,12 @@ export const deleteTask = createAction(ActionType.DELETE_TASK, (task, index) => 
 export const changeCheck = createAction(ActionType.CHANGE_CHECK, (task, index, select) => ({
   payload: {task: task,
             select: select,
+            index: index,
+          },
+}));
+
+export const changeTask = createAction(ActionType.CHANGE_TASK, (task, index) => ({
+  payload: {task: task,
             index: index,
           },
 }));
