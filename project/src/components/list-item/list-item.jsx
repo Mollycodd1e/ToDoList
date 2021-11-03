@@ -7,7 +7,7 @@ function ListItem(props) {
 
   const hiddenButtons = 'list__button-wrapper--closed';
   const disableOpacity = 0.3;
-  const enableOpacity = 1;
+  //const enableOpacity = 1;
 
   const {task, index, select, important} = props;
 
@@ -82,10 +82,10 @@ function ListItem(props) {
 
         <div className="list__button-wrapper list__button-wrapper--closed">
           <button className="list__button list__button--important" aria-label="Важная задача"
-          style ={select === false ? {opacity: disableOpacity} : {opacity: enableOpacity}}
+          style ={select === false ? {opacity: disableOpacity} : {opacity: ''}}
           onClick={(evt) => setImportantClass(evt.target)} disabled={select === false ? true : false}></button>
           <button className={`list__button list__button--edit`} aria-label="Редактировать задачу"
-          style ={select === false ? {opacity: disableOpacity} : {opacity: enableOpacity}} disabled={select === false ? true : false}
+          style ={select === false ? {opacity: disableOpacity} : {opacity: ''}} disabled={select === false ? true : false}
           onClick={(evt) => changeText(evt)}></button>
           <button className="list__button list__button--trash" aria-label="Удалить задачу"
           onClick={() => deleteNewTask(task, index, select)} onBlur={(evt) => hideButtons(evt.target)}></button>
