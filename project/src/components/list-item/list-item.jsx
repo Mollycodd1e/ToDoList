@@ -7,7 +7,6 @@ function ListItem(props) {
 
   const hiddenButtons = 'list__button-wrapper--closed';
   const disableOpacity = 0.3;
-  //const enableOpacity = 1;
 
   const {task, index, select, important} = props;
 
