@@ -18,6 +18,7 @@ const data = createReducer(initialState, (builder) => {
         if ((index === action.payload.index)) {
           task.task = action.payload.task;
         }
+        return null;
       });
     })
     .addCase(changeImportant, (state, action) => {
@@ -25,6 +26,7 @@ const data = createReducer(initialState, (builder) => {
         if ((task.task === action.payload.task) && (index === action.payload.index)) {
           task.important = action.payload.important;
         }
+        return null;
       });
     })
     .addCase(changeCheck, (state, action) => {
@@ -32,6 +34,7 @@ const data = createReducer(initialState, (builder) => {
         if ((task.task === action.payload.task) && (index === action.payload.index)) {
           task.select = action.payload.select;
         }
+        return null;
       });
     });
 });

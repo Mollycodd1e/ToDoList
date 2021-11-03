@@ -29,7 +29,7 @@
 
   &:hover,
   &:focus {
-    border: 2px solid #903535;
+    border: 2px solid $hover-color;
   }
 }
 
@@ -46,7 +46,7 @@
 
   &:hover svg,
   &:focus svg {
-    stroke: #903535;
+    stroke: $hover-color;
   }
 }
 
@@ -54,4 +54,11 @@
   margin: 0;
   padding: 0;
   margin-top: 40px;
+}
+
+@media (max-width: $tablet-width-only) {
+  .main-page__wrapper h1 {
+    font-size: 38px;
+    line-height: 57px;
+  }
 }

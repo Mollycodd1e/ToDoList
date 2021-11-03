@@ -7,7 +7,6 @@
   <title>ToDoList</title>
   <link rel="stylesheet" href="css/style.min.css">
   <link rel="preload" href="fonts/poppins-medium.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/cormorant-garamond-bold.woff2" as="font" type="font/woff2" crossorigin>
 </head>
 <body>
   <header class="main-header">
@@ -18,10 +17,10 @@
       <div class="main-page__add-task">
         <input name="new-task" type="text" id="new-task">
         <label class="visually-hidden" for="new-task">Добавить задачу</label>
-        <button class="main-page__new-task-btn">
+        <button class="main-page__new-task-btn" aria-label="Кнопка добавления задачи">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
         </button>
-        <button class="main-page__clear-task-btn">
+        <button class="main-page__clear-task-btn" aria-label="Кнопка очистки поля ввода">
           <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
         </button>
       </div>
