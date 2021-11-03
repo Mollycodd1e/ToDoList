@@ -32,9 +32,8 @@ function Main() {
       <section className="main-page__wrapper">
         <h1>ToDoList</h1>
         <div className="main-page__add-task">
-          <label className="visually-hidden" forhtml="new-task" aria-labelledby="Добавить задачу">
-            <input name="new-task" type="text" id="new-task" onKeyDown={(evt) => onEnterPress(evt)}/>
-          </label>
+          <input name="new-task" type="text" id="new-task" onKeyDown={(evt) => onEnterPress(evt)}/>
+          <label className="visually-hidden" forhtml="new-task" aria-label="Добавить задачу">Добавить задачу</label>
           <button className="main-page__new-task-btn" aria-label="Кнопка добавления задачи"
           onClick={() => addNewTask(document.querySelector('input[name="new-task"]').value, false, false)}>
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
