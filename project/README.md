@@ -17,3 +17,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 1. Для запуска проекта перейти в папку project.
 2. Запустить команду npm i.
 3. После завершения установки зависимостей запустить команду npm run start.
+4. В адресной строке добавить в конце index.html для корректного отображения проекта.
