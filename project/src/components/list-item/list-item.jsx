@@ -66,16 +66,16 @@ function ListItem(props) {
           <div className={`list__check-wrapper ${important === true ? '' : 'list__check-wrapper--important'}`}>
             <input className="visually-hidden" name={`check-task${index + 1}`} id={`check-task${index + 1}`} type="checkbox"
             onChange={() => examineCheck()} checked={select === false ? true : false}/>
-            <label forhtml={`check-task${index + 1}`} onClick={() => examineCheck()}><span>{index + 1}.</span>{task}</label>
+            <label htmlfor={`check-task${index + 1}`} onClick={() => examineCheck()}><span>{index + 1}.</span>{task}</label>
           </div> :
           <div className={`list__check-wrapper list__check-wrapper--edit ${important === true ? '' : 'list__check-wrapper--important'}`}>
             <input className="visually-hidden" name={`check-task${index + 1}`} id={`check-task${index + 1}`} type="checkbox"
             onChange={() => examineCheck()} checked={select === false ? true : false}/>
-            <label forhtml={`check-task${index + 1}`} onClick={() => examineCheck()}><span>{index + 1}.</span></label>
+            <label htmlfor={`check-task${index + 1}`} onClick={() => examineCheck()}><span>{index + 1}.</span></label>
             <div className={`list__input-edit-wrapper`}>
               <input type="text" name="edit-task" id="edit-task" onFocus={(evt) => setInputValue(evt)} autoFocus onBlur={(evt) => blurInput(evt)}
               onKeyDown={(evt) => blurOnEnterPress(evt)}></input>
-              <label className="visually-hidden" forhtml="edit-task">Редактирование задачи</label>
+              <label className="visually-hidden" htmlfor="edit-task">Редактирование задачи</label>
             </div>
           </div>
         }
