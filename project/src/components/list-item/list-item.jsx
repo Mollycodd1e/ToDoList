@@ -38,19 +38,25 @@ function ListItem(props) {
     dispatch(changeCheck(task, index, select));
   }
 
-  const textChange = () => {
+  const changeText = () => {
     setEdit(true);
   }
 
   const [edit, setEdit] = useState(false);
 
-  const blureffect = (evt) => {
+  const blurInput = (evt) => {
     setEdit(false);
     dispatch(changeTask(evt.target.value, index));
   }
 
-  const setValue = (evt) => {
+  const setInputValue = (evt) => {
     evt.target.value = `${task}`;
+  }
+
+  const blurOnEnterPress = (evt) => {
+    if (evt.keyCode === 13) {
+      evt.target.blur();
+    }
   }
 
   if (edit === false) {
@@ -68,7 +74,7 @@ function ListItem(props) {
           onClick={(evt) => setImportantClass(evt.target)} disabled={select === false ? true : false}></button>
           <button className={`list__button list__button--edit`} aria-label="Редактировать задачу"
           style ={select === false ? {opacity: disableOpacity} : {opacity: enableOpacity}} disabled={select === false ? true : false}
-          onClick={(evt) => textChange(evt)}></button>
+          onClick={(evt) => changeText(evt)}></button>
           <button className="list__button list__button--trash" aria-label="Удалить задачу"
           onClick={() => deleteNewTask(task, index, select)} onBlur={(evt) => hideButton(evt.target)}></button>
         </div>
@@ -83,7 +89,8 @@ function ListItem(props) {
           onChange={() => examineCheck()} checked={select === false ? true : false}/>
           <label forhtml={`check-task${index + 1}`} onClick={() => examineCheck()}><span>{index + 1}.</span></label>
           <div className={`list__input-edit-wrapper`}>
-            <input type="text" name="edit-task" id="edit-task" onFocus={(evt) => setValue(evt)} autoFocus onBlur={(evt) => blureffect(evt)}></input>
+            <input type="text" name="edit-task" id="edit-task" onFocus={(evt) => setInputValue(evt)} autoFocus onBlur={(evt) => blurInput(evt)}
+            onKeyDown={(evt) => blurOnEnterPress(evt)}></input>
             <label className="visually-hidden" forhtml="edit-task">Редактирование задачи</label>
           </div>
         </div>
@@ -93,7 +100,7 @@ function ListItem(props) {
           onClick={(evt) => setImportantClass(evt.target)} disabled={select === false ? true : false}></button>
           <button className={`list__button list__button--edit `} aria-label="Редактировать задачу"
           style ={select === false ? {opacity: disableOpacity} : {opacity: enableOpacity}} disabled={select === false ? true : false}
-          onClick={(evt) => textChange(evt.target)}></button>
+          onClick={(evt) => changeText(evt.target)}></button>
           <button className="list__button list__button--trash " aria-label="Удалить задачу"
           onClick={() => deleteNewTask(task, index, select)} onBlur={(evt) => hideButton(evt.target)}></button>
         </div>
@@ -105,7 +112,8 @@ function ListItem(props) {
 ListItem.propTypes = {
   task: PropTypes.string.isRequired,
   select: PropTypes.bool,
-  index: PropTypes.number.isRequired
+  index: PropTypes.number.isRequired,
+  important: PropTypes.bool.isRequired
 };
 
 export default ListItem;
