@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {changeCheck, changeImportant, changeTask, deleteTask} from '../store/action';
+import {changeCheck, changeImportant, changeSort, changeTask, deleteTask} from '../store/action';
 import {useDispatch} from 'react-redux';
 
 function ListItem(props) {
@@ -8,7 +8,7 @@ function ListItem(props) {
   const hiddenButtons = 'list__button-wrapper--closed';
   const disableOpacity = 0.3;
 
-  const {task, index, select, important} = props;
+  const {task, index, select, important, setId, currentId} = props;
 
   const dispatch = useDispatch();
 
@@ -33,8 +33,9 @@ function ListItem(props) {
     dispatch(changeImportant(task, index, important));
   }
 
-  const examineCheck = () => {
+  const examineCheck = (evt) => {
     dispatch(changeCheck(task, index, select));
+    evt.target.blur();
   }
 
   const changeText = () => {
@@ -58,23 +59,45 @@ function ListItem(props) {
     }
   }
 
+  const dragStartHandler = (e, task) => {
+    console.log('drag', task, index)
+    setId(index);
+  }
+
+  const dragEndHandler = (e) => {
+    e.target.style.background = 'white';
+  }
+
+  const dragOverHandler = (e) => {
+    e.preventDefault();
+    e.target.style.background = 'lightgrey';
+  }
+
+  const dropHandler = (e, task) => {
+    e.preventDefault();
+    e.target.style.background = 'white';
+    dispatch(changeSort(currentId, index));
+  }
+
     return (
-      <li onMouseEnter={(evt) => showButtons(evt.target)} onMouseLeave={(evt) => hideButtons(evt.target)}
-      onFocus={(evt) => showButtons(evt.target)}>
+      <li onDragStart={(e) => dragStartHandler(e, task)} onDragLeave={(e) => dragEndHandler(e)} onDragEnd={(e) => dragEndHandler(e)}
+      onDragOver={(e) => dragOverHandler(e)} onDrop={(e) => dropHandler(e, task)} onMouseEnter={(evt) => showButtons(evt.target)}
+      onMouseLeave={(evt) => hideButtons(evt.target)}
+      onFocus={(evt) => showButtons(evt.target)} draggable={true}>
         {(edit === false) ?
           <div className={`list__check-wrapper ${important === true ? '' : 'list__check-wrapper--important'}`}>
             <input className="visually-hidden" name={`check-task${index + 1}`} id={`check-task${index + 1}`} type="checkbox"
-            onChange={() => examineCheck()} checked={select === false ? true : false}/>
-            <label htmlfor={`check-task${index + 1}`} onClick={() => examineCheck()}><span>{index + 1}.</span>{task}</label>
+            onChange={(evt) => examineCheck(evt)} checked={select === false ? true : false}/>
+            <label htmlFor={`check-task${index + 1}`}><span>{index + 1}.</span>{task}</label>
           </div> :
           <div className={`list__check-wrapper list__check-wrapper--edit ${important === true ? '' : 'list__check-wrapper--important'}`}>
             <input className="visually-hidden" name={`check-task${index + 1}`} id={`check-task${index + 1}`} type="checkbox"
-            onChange={() => examineCheck()} checked={select === false ? true : false}/>
-            <label htmlfor={`check-task${index + 1}`} onClick={() => examineCheck()}><span>{index + 1}.</span></label>
+            onChange={(evt) => examineCheck(evt)} checked={select === false ? true : false}/>
+            <label htmlFor={`check-task${index + 1}`}><span>{index + 1}.</span></label>
             <div className={`list__input-edit-wrapper`}>
               <input type="text" name="edit-task" id="edit-task" onFocus={(evt) => setInputValue(evt)} autoFocus onBlur={(evt) => blurInput(evt)}
               onKeyDown={(evt) => blurOnEnterPress(evt)}></input>
-              <label className="visually-hidden" htmlfor="edit-task">Редактирование задачи</label>
+              <label className="visually-hidden" htmlFor="edit-task">Редактирование задачи</label>
             </div>
           </div>
         }
