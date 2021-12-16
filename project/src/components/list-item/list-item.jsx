@@ -59,8 +59,7 @@ function ListItem(props) {
     }
   }
 
-  const dragStartHandler = (e, task) => {
-    console.log('drag', task, index)
+  const dragStartHandler = (e) => {
     setId(index);
   }
 
@@ -73,15 +72,15 @@ function ListItem(props) {
     e.target.style.background = 'lightgrey';
   }
 
-  const dropHandler = (e, task) => {
+  const dropHandler = (e) => {
     e.preventDefault();
     e.target.style.background = 'white';
     dispatch(changeSort(currentId, index));
   }
 
     return (
-      <li onDragStart={(e) => dragStartHandler(e, task)} onDragLeave={(e) => dragEndHandler(e)} onDragEnd={(e) => dragEndHandler(e)}
-      onDragOver={(e) => dragOverHandler(e)} onDrop={(e) => dropHandler(e, task)} onMouseEnter={(evt) => showButtons(evt.target)}
+      <li onDragStart={(e) => dragStartHandler(e)} onDragLeave={(e) => dragEndHandler(e)} onDragEnd={(e) => dragEndHandler(e)}
+      onDragOver={(e) => dragOverHandler(e)} onDrop={(e) => dropHandler(e)} onMouseEnter={(evt) => showButtons(evt.target)}
       onMouseLeave={(evt) => hideButtons(evt.target)}
       onFocus={(evt) => showButtons(evt.target)} draggable={true}>
         {(edit === false) ?

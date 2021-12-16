@@ -31,10 +31,10 @@ const data = createReducer(initialState, (builder) => {
       });
     })
     .addCase(changeSort, (state, action) => {
-      console.log(action.payload);
-      for (let i = 0; i < state.tasksList.length; i++) {
-        [state.tasksList[action.payload.indexOne], state.tasksList[action.payload.indexTwo]] = [state.tasksList[action.payload.indexTwo], state.tasksList[action.payload.indexOne]];
+      const swapElements = (tasksArray, i, j) => {
+        [tasksArray[i], tasksArray[j]] = [tasksArray[j], tasksArray[i]];
       }
+      swapElements(state.tasksList, action.payload.indexOne, action.payload.indexTwo);
     })
     .addCase(changeCheck, (state, action) => {
       state.tasksList.map((task, index) => {
