@@ -1,10 +1,19 @@
 import React from 'react';
 import Main from '../main/main.jsx';
+//import Instruction from '../instruction/instruction.jsx';
+import {Switch, Route} from 'react-router-dom';
 
 function App() {
 
   return (
-    <Main />
+    <Switch>
+      <Route exact path="/">
+        <Main />
+      </Route>
+
+
+
+    </Switch>
   );
 }
 
