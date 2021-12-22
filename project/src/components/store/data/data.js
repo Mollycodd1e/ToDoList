@@ -8,7 +8,6 @@ const initialState = {
 const data = createReducer(initialState, (builder) => {
   builder
     .addCase(addTask, (state, action) => {
-      console.log(state.tasksList)
       state.tasksList.push(action.payload);
     })
     .addCase(deleteTask, (state, action) => {
