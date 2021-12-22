@@ -32,15 +32,15 @@ const data = createReducer(initialState, (builder) => {
     })
     .addCase(changeSort, (state, action) => {
       const swapElements = (tasksArray, i, j) => {
-        //[tasksArray[i], tasksArray[j]] = [tasksArray[j], tasksArray[i]];
-       // var lol = tasksArray[j];
 
-        tasksArray.slice(i, 1, tasksArray[i])
-        console.log(tasksArray[j])
-        //console.log(tasksArray)
+        if(i < j) {
+          state.tasksList = [...tasksArray.slice(0,i), ...tasksArray.slice(i+1, j), tasksArray[j], tasksArray[i], ...tasksArray.slice(j +1)];
+        } else {
+          state.tasksList = [...tasksArray.slice(0,j), tasksArray[i], ...tasksArray.slice(j,i), ...tasksArray.slice(i+1)];
+        }
       }
+
       swapElements(state.tasksList, action.payload.indexOne, action.payload.indexTwo);
-      console.log(state.tasksList)
     })
     .addCase(changeCheck, (state, action) => {
       state.tasksList.map((task, index) => {
