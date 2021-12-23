@@ -8,7 +8,7 @@ function ListItem(props) {
   const hiddenButtons = 'list__button-wrapper--closed';
   const disableOpacity = 0.3;
 
-  const {task, index, select, important, setId, currentId} = props;
+  const {task, index, select, important, setId, currentId, hide} = props;
 
   const dispatch = useDispatch();
 
@@ -79,7 +79,8 @@ function ListItem(props) {
   }
 
     return (
-      <li onDragStart={(e) => dragStartHandler(e)} onDragLeave={(e) => dragEndHandler(e)} onDragEnd={(e) => dragEndHandler(e)}
+      <li style={((select === false)&&(hide === true)) ? {display: `none`} : {display: `block`}}
+       onDragStart={(e) => dragStartHandler(e)} onDragLeave={(e) => dragEndHandler(e)} onDragEnd={(e) => dragEndHandler(e)}
       onDragOver={(e) => dragOverHandler(e)} onDrop={(e) => dropHandler(e)} onMouseEnter={(evt) => showButtons(evt.target)}
       onMouseLeave={(evt) => hideButtons(evt.target)}
       onFocus={(evt) => showButtons(evt.target)} draggable={true}>

@@ -7,6 +7,7 @@ export const ActionType = {
   CHANGE_IMPORTANT: '/changeImportant',
   CHANGE_TASK: '/changeTask',
   CHANGE_SORT: '/changeSort',
+  USE_SORT: '/useSort',
 };
 
 export const addTask = createAction(ActionType.ADD_TASK, (task, select, important) => ({
@@ -37,6 +38,10 @@ export const changeCheck = createAction(ActionType.CHANGE_CHECK, (task, index, s
       select: select,
       index: index,
     },
+}));
+
+export const changePriority = createAction(ActionType.USE_SORT, (taskList) => ({
+  payload: taskList,
 }));
 
 export const changeTask = createAction(ActionType.CHANGE_TASK, (task, index) => ({

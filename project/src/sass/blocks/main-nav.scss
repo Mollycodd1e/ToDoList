@@ -16,19 +16,24 @@
   margin-left: 20px;
 }
 
-.main-nav__faq-wrapper a,
-.main-nav__login-wrapper a {
+.main-nav__faq-wrapper button,
+.main-nav__login-wrapper button,
+.main-nav__sort-wrapper button {
+  background: none;
+  border: none;
   display: block;
   cursor: pointer;
   text-decoration: none;
 }
 
 .main-nav__faq-wrapper svg,
-.main-nav__login-wrapper svg {
+.main-nav__login-wrapper svg,
+.main-nav__sort-wrapper svg {
   stroke: #000000;
 }
 
-.main-nav__faq-wrapper a:hover svg,
-.main-nav__login-wrapper a:hover svg {
+.main-nav__faq-wrapper button:hover svg,
+.main-nav__login-wrapper button:hover svg,
+.main-nav__sort-wrapper button:hover svg {
   stroke: #903535;
 }

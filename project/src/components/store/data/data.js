@@ -1,5 +1,5 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {addTask, changeCheck, changeImportant, changeSort, changeTask, deleteTask} from '../action';
+import {addTask, changeCheck, changeImportant, changeSort, changeTask, deleteTask, changePriority} from '../action';
 
 const initialState = {
   tasksList: [],
@@ -40,6 +40,9 @@ const data = createReducer(initialState, (builder) => {
       }
 
       swapElements(state.tasksList, action.payload.indexOne, action.payload.indexTwo);
+    })
+    .addCase(changePriority, (state, action) => {
+      state.tasksList = action.payload;
     })
     .addCase(changeCheck, (state, action) => {
       state.tasksList.map((task, index) => {

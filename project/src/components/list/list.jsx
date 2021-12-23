@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function List(props) {
 
-  const {tasksList} = props;
+  const {tasksList, hide} = props;
 
   const [currentTaskId, setCurrentTaskId] = useState(null);
 
@@ -12,7 +12,7 @@ function List(props) {
     <ul className="main-page__list list">
       {tasksList.map((task, index) =>
         <ListItem task={task.task} index={index} key={index} select={task.select === false} important={task.important === false}
-        currentId={currentTaskId === null ? index : currentTaskId} setId={setCurrentTaskId}/>)
+        currentId={currentTaskId === null ? index : currentTaskId} setId={setCurrentTaskId} hide={hide}/>)
       }
     </ul>
   )
