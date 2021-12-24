@@ -78,12 +78,40 @@ function ListItem(props) {
     dispatch(changeSort(currentId, index));
   }
 
+  let x1 = null;
+  let y1 = null;
+
+  function handleTouchStart(evt) {
+    x1 = evt.touches[0].clientX;
+    y1 = evt.touches[0].clientY;
+  }
+
+  function handleTouchMove(evt) {
+    if (!x1 || !y1) {
+      return false;
+    }
+
+    let x2 = evt.touches[0].clientX;
+    let y2 = evt.touches[0].clientY;
+
+    let xDiff = x2 - x1;
+    let yDiff = y2 - y1;
+    console.log(evt.target.closest('li'));
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      (xDiff > 0) ? evt.target.closest('li').style="left:"+ xDiff +"px" : evt.target.closest('li').style="right:"+ xDiff +"px";
+    }// else {
+    //  (yDiff > 0) ? console.log('down') : console.log('up');
+    //}
+  }
+
     return (
       <li style={((select === false)&&(hide === true)) ? {display: `none`} : {display: `block`}}
-       onDragStart={(e) => dragStartHandler(e)} onDragLeave={(e) => dragEndHandler(e)} onDragEnd={(e) => dragEndHandler(e)}
-      onDragOver={(e) => dragOverHandler(e)} onDrop={(e) => dropHandler(e)} onMouseEnter={(evt) => showButtons(evt.target)}
-      onMouseLeave={(evt) => hideButtons(evt.target)}
-      onFocus={(evt) => showButtons(evt.target)} draggable={true}>
+      onTouchMove={(evt) => handleTouchMove(evt)}
+      onTouchStart={(evt)=> handleTouchStart(evt)} onTouchEnd={(evt) => setImportantClass(evt.target)}
+      onDragStart={(e) => dragStartHandler(e)} onDragLeave={(e) => dragEndHandler(e)} onDragEnd={(e) => dragEndHandler(e)}
+      onDragOver={(e) => dragOverHandler(e)} onDrop={(e) => dropHandler(e)} onMouseEnter={(evt) => (window.innerWidth > 1024) ? showButtons(evt.target) : ''}
+      onMouseLeave={(evt) => (window.innerWidth > 1024) ?  hideButtons(evt.target) : ''}
+      onFocus={(evt) => (window.innerWidth > 1024) ? showButtons(evt.target) : ''} draggable={true}>
         {(edit === false) ?
           <div className={`list__check-wrapper ${important === true ? '' : 'list__check-wrapper--important'}`}>
             <input className="visually-hidden" name={`check-task${index + 1}`} id={`check-task${index + 1}`} type="checkbox"

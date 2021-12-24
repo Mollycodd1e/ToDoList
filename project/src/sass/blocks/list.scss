@@ -222,4 +222,8 @@ li:hover .list__check-wrapper--important input:not(:checked) + label::before {
     font-size: 18px;
     line-height: 33px;
   }
+
+  .list li {
+    padding-right: 10px;
+  }
 }

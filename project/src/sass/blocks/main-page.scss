@@ -57,8 +57,20 @@
 }
 
 @media (max-width: $tablet-width-only) {
+  .main-page__wrapper {
+    padding: 0 10px;
+  }
+
+  .main-page__add-task {
+    margin-top: 10px;
+  }
+
   .main-page__wrapper h1 {
     font-size: 38px;
     line-height: 57px;
+  }
+
+  .main-page__list {
+    margin-top: 20px;
   }
 }

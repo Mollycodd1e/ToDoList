@@ -4,3 +4,10 @@
   padding-top: 20px;
   box-sizing: border-box;
 }
+
+@media(max-width: $tablet-width-only) {
+  .main-header {
+    padding: 0 10px;
+    padding-top: 10px;
+  }
+}
