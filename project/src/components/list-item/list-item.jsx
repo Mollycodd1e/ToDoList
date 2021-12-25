@@ -98,16 +98,19 @@ function ListItem(props) {
     let yDiff = y2 - y1;
     console.log(evt.target.closest('li'));
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      (xDiff > 0) ? evt.target.closest('li').style="left:"+ xDiff +"px" : evt.target.closest('li').style="right:"+ xDiff +"px";
-    }// else {
-    //  (yDiff > 0) ? console.log('down') : console.log('up');
-    //}
+      (xDiff > 0) ? evt.target.closest('li').style="left:"+ xDiff +"px" : evt.target.closest('li').style="right:"+ (-xDiff) +"px";
+    }
+  }
+
+  const rangeDiff = (evt) => {
+    evt.closest('li').style="left:"+ 0 +"px";
+    evt.closest('li').style="right:"+ 0 +"px";
   }
 
     return (
       <li style={((select === false)&&(hide === true)) ? {display: `none`} : {display: `block`}}
       onTouchMove={(evt) => handleTouchMove(evt)}
-      onTouchStart={(evt)=> handleTouchStart(evt)} onTouchEnd={(evt) => setImportantClass(evt.target)}
+      onTouchStart={(evt)=> handleTouchStart(evt)} onTouchEnd={(evt) =>  rangeDiff(evt.target)}
       onDragStart={(e) => dragStartHandler(e)} onDragLeave={(e) => dragEndHandler(e)} onDragEnd={(e) => dragEndHandler(e)}
       onDragOver={(e) => dragOverHandler(e)} onDrop={(e) => dropHandler(e)} onMouseEnter={(evt) => (window.innerWidth > 1024) ? showButtons(evt.target) : ''}
       onMouseLeave={(evt) => (window.innerWidth > 1024) ?  hideButtons(evt.target) : ''}
