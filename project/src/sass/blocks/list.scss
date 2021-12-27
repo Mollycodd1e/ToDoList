@@ -223,7 +223,16 @@ li:hover .list__check-wrapper--important input:not(:checked) + label::before {
     line-height: 33px;
   }
 
+  .list {
+    overflow: hidden;
+  }
+
   .list li {
     padding-right: 10px;
+  }
+
+  .list__button-wrapper--closed {
+    display: block;
+    width: 180px;
   }
 }

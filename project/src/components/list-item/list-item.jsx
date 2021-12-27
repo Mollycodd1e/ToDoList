@@ -8,6 +8,8 @@ function ListItem(props) {
   const hiddenButtons = 'list__button-wrapper--closed';
   const disableOpacity = 0.3;
 
+  //const buttonsLenght = parseFloat(getComputedStyle(document.querySelector('.list__button-wrapper')).width);
+
   const {task, index, select, important, setId, currentId, hide} = props;
 
   const dispatch = useDispatch();
@@ -19,6 +21,14 @@ function ListItem(props) {
   const showButtons = (evt) => {
     const buttons = evt.closest('li').querySelector('.list__button-wrapper');
     buttons.classList.remove(hiddenButtons);
+  }
+
+  const getButtonsLength = () => {
+    if (document.querySelector('.list__button-wrapper')) {
+      return parseFloat(getComputedStyle(document.querySelector('.list__button-wrapper')).width);
+    } else {
+      return 0;
+    }
   }
 
   const hideButtons = (evt) => {
@@ -96,21 +106,35 @@ function ListItem(props) {
 
     let xDiff = x2 - x1;
     let yDiff = y2 - y1;
-    console.log(evt.target.closest('li'));
+
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
-      (xDiff > 0) ? evt.target.closest('li').style="left:"+ xDiff +"px" : evt.target.closest('li').style="right:"+ (-xDiff) +"px";
+      if (Math.abs(xDiff) < getButtonsLength()/2) {
+        (xDiff < 0) ? evt.target.closest('li').style="left:"+ xDiff +"px" : evt.target.closest('li').style="left:"+ 0 +"px";
+        (xDiff < 0) ? evt.target.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+  (window.innerWidth + xDiff -20) + "px" : evt.target.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+ window.innerWidth +"px";
+      } else {
+        evt.target.closest('li').style="left:"+ (-getButtonsLength()/2) +"px";
+        evt.target.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+  (window.innerWidth -20- getButtonsLength()/2) + "px";
+        evt.target.closest('label').style="padding-right:"+ 70 + "px";
+      }
+
     }
   }
 
-  const rangeDiff = (evt) => {
-    evt.closest('li').style="left:"+ 0 +"px";
-    evt.closest('li').style="right:"+ 0 +"px";
+  const resetDiff = (evt) => {
+    if ((parseFloat(getComputedStyle(evt.closest('li').querySelector('.list__button-wrapper--closed')).left) - window.innerWidth) < (- getButtonsLength()/2)) {
+      evt.closest('li').style="left:"+ (-getButtonsLength()/2) +"px";
+      evt.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+ (window.innerWidth - getButtonsLength()/2 - 20) +"px";
+    } else {
+      evt.closest('label').style="padding-right:"+ 0 + "px";
+      evt.closest('li').style="left:"+ 0 +"px";
+      evt.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+ window.innerWidth +"px";
+    }
   }
 
     return (
       <li style={((select === false)&&(hide === true)) ? {display: `none`} : {display: `block`}}
       onTouchMove={(evt) => handleTouchMove(evt)}
-      onTouchStart={(evt)=> handleTouchStart(evt)} onTouchEnd={(evt) =>  rangeDiff(evt.target)}
+      onTouchStart={(evt)=> handleTouchStart(evt)} onTouchEnd={(evt) =>  resetDiff(evt.target)}
       onDragStart={(e) => dragStartHandler(e)} onDragLeave={(e) => dragEndHandler(e)} onDragEnd={(e) => dragEndHandler(e)}
       onDragOver={(e) => dragOverHandler(e)} onDrop={(e) => dropHandler(e)} onMouseEnter={(evt) => (window.innerWidth > 1024) ? showButtons(evt.target) : ''}
       onMouseLeave={(evt) => (window.innerWidth > 1024) ?  hideButtons(evt.target) : ''}
@@ -133,7 +157,7 @@ function ListItem(props) {
           </div>
         }
 
-        <div className="list__button-wrapper list__button-wrapper--closed">
+        <div className="list__button-wrapper list__button-wrapper--closed" style={(window.innerWidth < 1024) ? {left: window.innerWidth} : ``}>
           <button className="list__button list__button--important" aria-label="Важная задача"
           style ={select === false ? {opacity: disableOpacity} : {opacity: ''}}
           onClick={(evt) => setImportantClass(evt.target)} disabled={select === false ? true : false}></button>
