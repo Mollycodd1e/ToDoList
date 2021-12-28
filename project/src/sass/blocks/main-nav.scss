@@ -16,6 +16,7 @@
   margin-left: 20px;
 }
 
+.main-nav__hide-wrapper button,
 .main-nav__faq-wrapper button,
 .main-nav__login-wrapper button,
 .main-nav__sort-wrapper button {
@@ -26,14 +27,27 @@
   text-decoration: none;
 }
 
+.main-nav__hide-wrapper svg,
 .main-nav__faq-wrapper svg,
 .main-nav__login-wrapper svg,
 .main-nav__sort-wrapper svg {
   stroke: #000000;
 }
 
+.main-nav__hide-wrapper button:hover svg
 .main-nav__faq-wrapper button:hover svg,
 .main-nav__login-wrapper button:hover svg,
 .main-nav__sort-wrapper button:hover svg {
   stroke: #903535;
+}
+
+
+@media (max-width: $mobile-width-only) {
+  .main-nav__hide-wrapper svg,
+  .main-nav__faq-wrapper svg,
+  .main-nav__login-wrapper svg,
+  .main-nav__sort-wrapper svg {
+    width: 25px;
+    height: 25px;
+  }
 }

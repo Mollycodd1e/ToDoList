@@ -19,6 +19,20 @@
   margin-top: 30px;
 }
 
+.main-page__input-wrapper {
+  width: 100%;
+}
+
+.main-page__input-wrapper input {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-page__input-clear-btn {
+  display: none;
+}
+
 .main-page__add-task input {
   font-size: 20px;
   line-height: 30px;
@@ -72,5 +86,71 @@
 
   .main-page__list {
     margin-top: 20px;
+  }
+}
+
+@media (max-width: $mobile-width-only) {
+  .main-page__wrapper h1 {
+    font-size: 30px;
+    line-height: 45px;
+  }
+
+  .main-page__clear-task-btn {
+    display: none;
+  }
+
+  .main-page__new-task-btn {
+    margin-left: 5px;
+  }
+
+  .main-page__new-task-btn svg {
+    width: 25px;
+    height: 25px;
+    margin-bottom: -3px;
+  }
+
+  .main-page__add-task input {
+    font-size: 16px;
+    line-height: 24px;
+    padding-right: 20px;
+  }
+
+  .main-page__input-wrapper {
+    position: relative;
+  }
+
+  .main-page__input-clear-btn {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 20px;
+    top: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+
+      top: 5px;
+      left: 8px;
+      width: 2px;
+      height: 15px;
+      background-color: #000000;
+    }
+
+    &::before {
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      transform: rotate(45deg);
+    }
+  }
+
+  .main-page__input-clear-btn--closed {
+    display: none;
   }
 }

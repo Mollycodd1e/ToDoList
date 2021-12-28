@@ -111,21 +111,18 @@ function ListItem(props) {
       if (Math.abs(xDiff) < getButtonsLength()/2) {
         (xDiff < 0) ? evt.target.closest('li').style="left:"+ xDiff +"px" : evt.target.closest('li').style="left:"+ 0 +"px";
         (xDiff < 0) ? evt.target.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+  (window.innerWidth + xDiff -20) + "px" : evt.target.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+ window.innerWidth +"px";
-      } else {
-        evt.target.closest('li').style="left:"+ (-getButtonsLength()/2) +"px";
-        evt.target.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+  (window.innerWidth -20- getButtonsLength()/2) + "px";
-        evt.target.closest('label').style="padding-right:"+ 70 + "px";
       }
-
     }
   }
 
   const resetDiff = (evt) => {
     if ((parseFloat(getComputedStyle(evt.closest('li').querySelector('.list__button-wrapper--closed')).left) - window.innerWidth) < (- getButtonsLength()/2)) {
+      console.log(evt)
       evt.closest('li').style="left:"+ (-getButtonsLength()/2) +"px";
+      evt.closest('div').style="padding-right:"+ 70 + "px";
       evt.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+ (window.innerWidth - getButtonsLength()/2 - 20) +"px";
     } else {
-      evt.closest('label').style="padding-right:"+ 0 + "px";
+      evt.closest('div').style="padding-right:"+ 0 + "px";
       evt.closest('li').style="left:"+ 0 +"px";
       evt.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+ window.innerWidth +"px";
     }
@@ -157,7 +154,7 @@ function ListItem(props) {
           </div>
         }
 
-        <div className="list__button-wrapper list__button-wrapper--closed" style={(window.innerWidth < 1024) ? {left: window.innerWidth} : ``}>
+        <div className="list__button-wrapper list__button-wrapper--closed" style={(window.innerWidth < 1024) ? {left: window.innerWidth} : {left: `0`}}>
           <button className="list__button list__button--important" aria-label="Важная задача"
           style ={select === false ? {opacity: disableOpacity} : {opacity: ''}}
           onClick={(evt) => setImportantClass(evt.target)} disabled={select === false ? true : false}></button>

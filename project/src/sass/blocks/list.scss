@@ -236,3 +236,25 @@ li:hover .list__check-wrapper--important input:not(:checked) + label::before {
     width: 180px;
   }
 }
+
+@media (max-width: $mobile-width-only) {
+  .list__check-wrapper label {
+    font-size: 16px;
+    line-height: 24px;
+    padding-left: 40px;
+  }
+
+  .list__check-wrapper input:not(:checked) + label::before {
+    background-size: 25px 25px;
+  }
+
+  .list__check-wrapper input:checked + label {
+    &::after {
+      background-size: 25px 25px;
+    }
+  }
+
+  .list .list__button {
+    background-size: 25px 25px;
+  }
+}
