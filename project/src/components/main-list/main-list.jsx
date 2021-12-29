@@ -36,16 +36,11 @@ function MainList(props) {
   const onInputBlur = (evt) => {
     if (evt.target !== document.querySelector('.main-page__input-clear-btn')) {
       document.querySelector('.main-page__input-clear-btn').classList.add('main-page__input-clear-btn--closed');
-      clearInput(document.querySelector('input[name="new-task"]'));
     }
-    //document.querySelector('input[name="new-task"]').focus();
-    //document.querySelector('.main-page__input-clear-btn').classList.remove('main-page__input-clear-btn--closed');
   }
 
-  const onClearClick = (evt) => {
-    evt.preventDefault();
+  const onClearClick = () => {
     clearInput(document.querySelector('input[name="new-task"]'));
-    document.querySelector('.main-page__input-clear-btn').classList.add('main-page__input-clear-btn--closed');
   }
 
   return (
@@ -56,7 +51,8 @@ function MainList(props) {
           <input name="new-task" type="text" id="new-task" onKeyDown={(evt) => onEnterPress(evt)}
           onFocus={(evt) => onInputEnter(evt)} onBlur={(evt) => onInputBlur(evt)}/>
           <label className="visually-hidden" htmlFor="new-task" aria-label="Добавить задачу">Добавить задачу</label>
-          <button className="main-page__input-clear-btn main-page__input-clear-btn--closed">
+          <button className="main-page__input-clear-btn main-page__input-clear-btn--closed" onMouseDown={(evt) => evt.preventDefault()}
+          onClick={() => onClearClick()}>
             <span className="visually-hidden">
               Стереть
             </span>

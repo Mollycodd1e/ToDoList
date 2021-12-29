@@ -94,6 +94,16 @@ function ListItem(props) {
   function handleTouchStart(evt) {
     x1 = evt.touches[0].clientX;
     y1 = evt.touches[0].clientY;
+
+    const taskList = Array.from(document.querySelector('.main-page__list').querySelectorAll('li'))
+
+    taskList.map((item) => {
+      return (
+        (item !== evt.target.closest('li')) ?
+          (item.style='left:' + 0 + 'px',
+          item.querySelector('.list__button-wrapper--closed').style="left:"+ window.innerWidth +"px") : ''
+      );
+    })
   }
 
   function handleTouchMove(evt) {
@@ -117,7 +127,6 @@ function ListItem(props) {
 
   const resetDiff = (evt) => {
     if ((parseFloat(getComputedStyle(evt.closest('li').querySelector('.list__button-wrapper--closed')).left) - window.innerWidth) < (- getButtonsLength()/2)) {
-      console.log(evt)
       evt.closest('li').style="left:"+ (-getButtonsLength()/2) +"px";
       evt.closest('div').style="padding-right:"+ 70 + "px";
       evt.closest('li').querySelector('.list__button-wrapper--closed').style="left:"+ (window.innerWidth - getButtonsLength()/2 - 20) +"px";
@@ -154,7 +163,7 @@ function ListItem(props) {
           </div>
         }
 
-        <div className="list__button-wrapper list__button-wrapper--closed" style={(window.innerWidth < 1024) ? {left: window.innerWidth} : {left: `0`}}>
+        <div className="list__button-wrapper list__button-wrapper--closed" style={(window.innerWidth < 1024) ? {left: window.innerWidth} : {left: ``}}>
           <button className="list__button list__button--important" aria-label="Важная задача"
           style ={select === false ? {opacity: disableOpacity} : {opacity: ''}}
           onClick={(evt) => setImportantClass(evt.target)} disabled={select === false ? true : false}></button>
