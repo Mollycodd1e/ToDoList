@@ -8,8 +8,6 @@ function ListItem(props) {
   const hiddenButtons = 'list__button-wrapper--closed';
   const disableOpacity = 0.3;
 
-  //const buttonsLenght = parseFloat(getComputedStyle(document.querySelector('.list__button-wrapper')).width);
-
   const {task, index, select, important, setId, currentId, hide} = props;
 
   const dispatch = useDispatch();
@@ -92,8 +90,13 @@ function ListItem(props) {
   let y1 = null;
 
   function handleTouchStart(evt) {
+
     x1 = evt.touches[0].clientX;
     y1 = evt.touches[0].clientY;
+
+    //setTimeout(() => {
+    //  dropHandler(evt)
+    //}, 400);
 
     const taskList = Array.from(document.querySelector('.main-page__list').querySelectorAll('li'))
 
@@ -107,6 +110,7 @@ function ListItem(props) {
   }
 
   function handleTouchMove(evt) {
+
     if (!x1 || !y1) {
       return false;
     }
