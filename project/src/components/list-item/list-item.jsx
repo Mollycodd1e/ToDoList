@@ -95,7 +95,6 @@ function ListItem(props) {
     y1 = evt.touches[0].clientY;
 
     //setTimeout(() => {
-    //  dropHandler(evt)
     //}, 400);
 
     const taskList = Array.from(document.querySelector('.main-page__list').querySelectorAll('li'))
