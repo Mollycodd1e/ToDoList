@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router as BrowserRouter} from 'react-router-dom';
+import {Router as HashRouter} from 'react-router-dom';
 import browserHistory from './browser-history.js';
 import App from '../src/components/app/app.jsx';
 import {configureStore} from '@reduxjs/toolkit';
@@ -13,9 +13,9 @@ const store = configureStore({reducer: reducer});
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter history={browserHistory}>
+      <HashRouter history={browserHistory}>
         <App />
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
