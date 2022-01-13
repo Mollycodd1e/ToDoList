@@ -27,7 +27,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://Mollycodd1e.github.io/ToDoList",
+  "homepage": "https://mollycodd1e.github.io/ToDoList",
   "browserslist": {
     "production": [
       ">0.2%",
