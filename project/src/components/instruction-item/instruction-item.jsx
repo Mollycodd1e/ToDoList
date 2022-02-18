@@ -1,7 +1,7 @@
 import React from 'react';
 
 function InstructionList(props) {
-
+  // привет
   const {index, item} = props;
 
   return (
