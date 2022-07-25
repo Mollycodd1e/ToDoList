@@ -94,9 +94,6 @@ function ListItem(props) {
     x1 = evt.touches[0].clientX;
     y1 = evt.touches[0].clientY;
 
-    //setTimeout(() => {
-    //}, 400);
-
     const taskList = Array.from(document.querySelector('.main-page__list').querySelectorAll('li'))
 
     taskList.map((item) => {
@@ -166,7 +163,7 @@ function ListItem(props) {
           </div>
         }
 
-        <div className="list__button-wrapper list__button-wrapper--closed" style={(window.innerWidth < 1024) ? {left: window.innerWidth} : {left: ``}}>
+        <div className="list__button-wrapper list__button-wrapper--closed" style={{left: ``}}>
           <button className="list__button list__button--important" aria-label="Важная задача"
           style ={select === false ? {opacity: disableOpacity} : {opacity: ''}}
           onClick={(evt) => setImportantClass(evt.target)} disabled={select === false ? true : false}></button>

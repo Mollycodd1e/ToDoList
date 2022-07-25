@@ -1,9 +1,10 @@
 import React from 'react';
+import { memo } from "react";
 import {useDispatch, useSelector} from 'react-redux';
 import {changePriority} from '../store/action';
 import {getTasksList} from '../store/data/selectors';
 
-function Header(props) {
+function Header (props) {
 
   const {instruction, instructionHandler, hide, hideHandler} = props;
 
@@ -22,7 +23,7 @@ function Header(props) {
     listOfTasks.map((item) => {
       return(
         (item.style='left:' + 0 + 'px',
-        item.querySelector('.list__button-wrapper--closed').style="left:"+ window.innerWidth +"px")
+        item.querySelector('.list__button-wrapper--closed').style="left:"+ window.innerWidth - item.querySelector('.list__button-wrapper--closed').width +"px")
       );
     })
   }
@@ -89,4 +90,4 @@ function Header(props) {
   )
 }
 
-export default Header;
+export default memo(Header);
